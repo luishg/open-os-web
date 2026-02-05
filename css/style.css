@@ -62,7 +62,7 @@ a:hover {
     justify-content: center;
     background-image: url('../images/space_explorer.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-attachment: fixed;
 }
 

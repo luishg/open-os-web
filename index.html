@@ -101,11 +101,11 @@
     </footer>
 
     <script>
-        // Subtle parallax effect for hero
+        // Subtle parallax effect for hero (moves up as you scroll)
         window.addEventListener('scroll', function() {
             const hero = document.querySelector('.hero');
             const scrolled = window.pageYOffset;
-            hero.style.backgroundPositionY = scrolled * 0.15 + 'px';
+            hero.style.backgroundPositionY = -scrolled * 0.3 + 'px';
         });
     </script>
 
