@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Open-OS - Open tools for interoperable digital systems">
+    <title>Open-OS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Hero Section with Parallax -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Open-OS</h1>
+            <p class="tagline">Open tools for interoperable digital systems</p>
+            <a href="#projects" class="cta-button">View Projects</a>
+        </div>
+    </section>
+
+    <!-- Principles Section -->
+    <section class="principles" id="principles">
+        <div class="container">
+            <h2>Principles</h2>
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <h3>Interoperability</h3>
+                    <p>Open formats, standard protocols, no vendor lock-in. Systems should communicate with each other. Data should move freely.</p>
+                </div>
+                <div class="principle-card">
+                    <h3>Local-first</h3>
+                    <p>User data lives on user devices by default. Cloud sync is optional, encrypted, and user-controlled.</p>
+                </div>
+                <div class="principle-card">
+                    <h3>Open Source</h3>
+                    <p>All code is public, auditable, and reusable under permissive licenses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+
+            <article class="project">
+                <div class="project-header">
+                    <h3>LLM Browser Extension</h3>
+                    <span class="status status-released">Released</span>
+                </div>
+                <p class="project-subtitle">Browser interface for local language models</p>
+                <p>A lightweight extension that connects to any LLM running on Ollama (Llama, Mistral, Phi, Gemma, and others). Chat with AI directly from your browser without external servers, accounts, or telemetry.</p>
+                <p>Available for Chromium browsers (Chrome, Brave, Edge).</p>
+                <p class="project-note">Coming soon: Soul Protocol integration for persistent context across sessions.</p>
+                <div class="project-links">
+                    <a href="https://github.com/niceelee/Open-OS-LLM-Browser-Extension" target="_blank" rel="noopener">GitHub</a>
+                    <a href="#" target="_blank" rel="noopener">Chrome Web Store</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="project-header">
+                    <h3>Soul Protocol</h3>
+                    <span class="status status-progress">In Progress</span>
+                </div>
+                <p class="project-subtitle">Specification for portable AI identities</p>
+                <p>A standard format to store AI assistant configuration, memory, and context in a way that can migrate between different models and providers.</p>
+                <div class="project-diagram">
+                    <code>Identity + Memory + Context<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Portable across LLMs<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Local storage<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Optional sync</code>
+                </div>
+                <p>Your relationship with an AI assistant shouldn't be locked to a single provider. Soul Protocol defines how to make it portable.</p>
+                <div class="project-links">
+                    <a href="./docs/soul-protocol/" target="_blank" rel="noopener">Documentation</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="project-header">
+                    <h3>Uptodown</h3>
+                    <span class="status status-production">Production</span>
+                </div>
+                <p class="project-subtitle">Independent software distribution platform</p>
+                <p>App marketplace operating since 2002. Direct distribution without platform restrictions, zero commission for developers, accessible from any browser.</p>
+                <p class="project-stats">130M+ monthly active users · 3M+ apps · 15 languages</p>
+                <p>A project predating Open-OS but aligned with the same principles.</p>
+                <div class="project-links">
+                    <a href="https://uptodown.com" target="_blank" rel="noopener">uptodown.com</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <h2>Roadmap</h2>
+            <div class="roadmap-table">
+                <div class="roadmap-row roadmap-header">
+                    <span>Project</span>
+                    <span>Status</span>
+                    <span>Next</span>
+                </div>
+                <div class="roadmap-row">
+                    <span>LLM Browser Extension</span>
+                    <span>Released</span>
+                    <span>Soul Protocol integration</span>
+                </div>
+                <div class="roadmap-row">
+                    <span>Soul Protocol</span>
+                    <span>Specification design</span>
+                    <span>v0.1 spec release</span>
+                </div>
+                <div class="roadmap-row">
+                    <span>Uptodown</span>
+                    <span>Production (20+ years)</span>
+                    <span>—</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About</h2>
+            <p>Open-OS is a personal project by <a href="https://linkedin.com/in/luishgcom" target="_blank" rel="noopener">Luis Hernández</a>.</p>
+            <p>Co-founder of Uptodown. Building open software infrastructure since 2002.</p>
+            <p class="location">Málaga, Spain</p>
+            <div class="social-links">
+                <a href="https://github.com/luishg" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://linkedin.com/in/luishgcom" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://x.com/luishg" target="_blank" rel="noopener">X</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-brand">Open-OS</p>
+            <p class="footer-tagline">Open tools for interoperable digital systems</p>
+            <div class="footer-links">
+                <a href="https://github.com/luishg/open-os-web" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <p class="footer-license">MIT License</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple parallax effect for hero
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        });
+    </script>
+
+</body>
+</html>
