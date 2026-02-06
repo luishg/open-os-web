@@ -12,15 +12,15 @@
     --color-bg-elevated: #1c1c21;
     --color-text: #ececf1;
     --color-text-muted: #8e8ea0;
-    --color-accent: #6366f1;
-    --color-accent-light: #818cf8;
+    --color-accent: #06b6d4;
+    --color-accent-light: #22d3ee;
     --color-border: #27272a;
     --color-border-light: #3f3f46;
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --max-width: 900px;
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
 }
 
 html {
@@ -120,7 +120,7 @@ a:hover {
     background: var(--color-accent-light);
     color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 8px 30px rgba(6, 182, 212, 0.35);
 }
 
 /* Mission Section */
@@ -154,7 +154,7 @@ a:hover {
     padding: 8px 20px;
     background: var(--color-bg-elevated);
     border: 1px solid var(--color-border);
-    border-radius: 100px;
+    border-radius: var(--radius-md);
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--color-text-muted);
@@ -188,6 +188,7 @@ section h2 {
 
 .project:hover {
     border-color: var(--color-border-light);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.06);
 }
 
 .project:last-child {
@@ -214,11 +215,11 @@ section h2 {
     padding: 6px 14px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    border-radius: 100px;
+    border-radius: var(--radius-sm);
 }
 
 .status-released {
-    background-color: rgba(99, 102, 241, 0.15);
+    background-color: rgba(6, 182, 212, 0.15);
     color: var(--color-accent-light);
 }
 
