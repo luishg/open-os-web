@@ -26,10 +26,10 @@
     <!-- Mission Section -->
     <section class="mission" id="mission">
         <div class="container">
-            <p class="mission-text">
+            <p class="mission-text reveal">
                 Building a different relationship with technology and paving the way toward intelligent operating systems. open-os develops and promotes <strong>accessible</strong>, <strong>distributed</strong>, and <strong>interoperable</strong> technologies that work across platforms, respect your data, and remain open for anyone.
             </p>
-            <div class="principles-badges">
+            <div class="principles-badges reveal">
                 <span class="badge">Accessible</span>
                 <span class="badge">Distributed</span>
                 <span class="badge">Interoperable</span>
@@ -40,7 +40,7 @@
     <!-- Projects Section -->
     <section class="projects" id="projects">
         <div class="container">
-            <article class="project project-featured">
+            <article class="project project-featured reveal">
                 <div class="project-header">
                     <h3>LLM Browser Extension</h3>
                     <span class="status status-released">Released</span>
@@ -59,7 +59,7 @@
                 </div>
             </article>
 
-            <article class="project project-featured">
+            <article class="project project-featured reveal">
                 <div class="project-header">
                     <h3>Soul Protocol</h3>
                     <span class="status status-progress">In Progress</span>
@@ -76,7 +76,7 @@
                 </div>
             </article>
 
-            <article class="project">
+            <article class="project reveal">
                 <div class="project-header">
                     <h3>Uptodown</h3>
                     <span class="status status-production">Production</span>
@@ -93,7 +93,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer reveal">
         <div class="container">
             <p class="footer-brand">open-os</p>
             <p class="footer-tagline">accesible, distributed and open tools for interoperable systems</p>
@@ -103,10 +103,10 @@
     </footer>
 
     <script>
-        // GPU-accelerated parallax for hero background
-        const heroBg = document.querySelector('.hero-bg');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+        // GPU-accelerated parallax for hero background
+        const heroBg = document.querySelector('.hero-bg');
         if (!prefersReducedMotion) {
             let ticking = false;
             window.addEventListener('scroll', function() {
@@ -119,6 +119,22 @@
                     ticking = true;
                 }
             });
+        }
+
+        // Scroll reveal via Intersection Observer
+        var reveals = document.querySelectorAll('.reveal');
+        if (prefersReducedMotion) {
+            reveals.forEach(function(el) { el.classList.add('revealed'); });
+        } else {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            reveals.forEach(function(el) { observer.observe(el); });
         }
     </script>
 
