@@ -60,29 +60,49 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    background-color: var(--color-bg);
+}
+
+.hero-bg {
+    position: absolute;
+    inset: -15% 0 0 0;
+    height: 130%;
     background-image: url('../images/space_explorer.jpg');
     background-size: cover;
-    background-position: center top;
-    background-attachment: fixed;
+    background-position: center 20%;
+    background-repeat: no-repeat;
+    transform: scale(1.1);
+    will-change: transform;
 }
 
 .hero-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: linear-gradient(
         135deg,
         rgba(9, 9, 11, 0.85) 0%,
-        rgba(9, 9, 11, 0.7) 50%,
-        rgba(9, 9, 11, 0.9) 100%
+        rgba(9, 9, 11, 0.65) 50%,
+        rgba(9, 9, 11, 0.85) 100%
     );
+}
+
+/* Bottom fade to background color */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, var(--color-bg));
+    z-index: 1;
+    pointer-events: none;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     text-align: center;
     padding: 24px;
 }
@@ -440,7 +460,12 @@ section h2 {
 
     .hero {
         min-height: 500px;
-        background-attachment: scroll;
+    }
+
+    .hero-bg {
+        height: 120%;
+        inset: -10% 0 0 0;
+        background-position: center center;
     }
 
     .mission {
@@ -495,8 +520,8 @@ section h2 {
         scroll-behavior: auto;
     }
 
-    .hero {
-        background-attachment: scroll;
+    .hero-bg {
+        will-change: auto;
     }
 
     .cta-button:hover {

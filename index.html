@@ -14,6 +14,7 @@
 
     <!-- Hero Section with Parallax -->
     <section class="hero" id="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>open-os</h1>
@@ -98,12 +99,23 @@
     </footer>
 
     <script>
-        // Subtle parallax effect for hero (moves up as you scroll)
-        window.addEventListener('scroll', function() {
-            const hero = document.querySelector('.hero');
-            const scrolled = window.pageYOffset;
-            hero.style.backgroundPositionY = -scrolled * 0.3 + 'px';
-        });
+        // GPU-accelerated parallax for hero background
+        const heroBg = document.querySelector('.hero-bg');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!prefersReducedMotion) {
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        const scrolled = window.pageYOffset;
+                        heroBg.style.transform = 'translate3d(0, ' + scrolled * 0.35 + 'px, 0) scale(1.1)';
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        }
     </script>
 
 </body>
