@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy Policy — open-os LLM Browser Extension">
+    <title>Privacy Policy — open-os</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .privacy {
+            padding: 120px 0 80px;
+            background-color: var(--color-bg);
+        }
+        .privacy h1 {
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+        .privacy .effective-date {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 48px;
+        }
+        .privacy h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+        .privacy p,
+        .privacy li {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+        .privacy ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 16px;
+        }
+        .privacy li::before {
+            content: "—";
+            color: var(--color-accent);
+            margin-right: 10px;
+        }
+        .privacy a {
+            color: var(--color-accent-light);
+        }
+        .privacy strong {
+            color: var(--color-text);
+            font-weight: 500;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 32px;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+        .back-link:hover {
+            color: var(--color-accent-light);
+        }
+    </style>
+</head>
+<body>
+
+    <section class="privacy">
+        <div class="container">
+            <a href="/" class="back-link">&larr; back to open-os</a>
+            <h1>Privacy Policy</h1>
+            <p class="effective-date">Effective date: February 16, 2026</p>
+
+            <p><strong>open-os LLM Browser Extension</strong> does not collect, transmit, store on external servers, or share any personal or sensitive user data.</p>
+
+            <h2>1. Data Collection</h2>
+            <p>This extension does not collect any personal information. The extension stores the following user preferences locally using Chrome Storage:</p>
+            <ul>
+                <li>User-defined display name</li>
+                <li>LLM display name</li>
+                <li>Selected theme</li>
+                <li>Font size preferences</li>
+                <li>Pre-prompt configuration</li>
+                <li>Selected local identity (if any)</li>
+            </ul>
+            <p>All stored data remains within the user's browser. If Chrome Sync is enabled on the user's browser, Chrome may synchronize these preferences across devices through Google's own infrastructure. This is a standard Chrome feature and is not controlled by the extension.</p>
+
+            <h2>2. Network Communication</h2>
+            <p>The extension communicates only with a locally running <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> instance on the user's machine (typically <code>http://localhost:11434</code>). No external servers are contacted by the extension.</p>
+
+            <h2>3. No Analytics or Tracking</h2>
+            <p>This extension does not use analytics, tracking technologies, or telemetry. It does not sell or share user data.</p>
+
+            <h2>4. Data Control</h2>
+            <p>Users may delete all stored settings at any time by removing the extension or clearing Chrome extension storage.</p>
+
+            <h2>5. Contact</h2>
+            <p>For questions about this privacy policy, contact <a href="https://x.com/luishg" target="_blank" rel="noopener">@luishg</a> or visit <a href="https://github.com/luishg/open-os" target="_blank" rel="noopener">the project on GitHub</a>.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-brand">open-os</p>
+            <p class="footer-tagline">accesible, distributed and open tools for interoperable systems</p>
+            <p class="footer-author"><a href="https://x.com/luishg" target="_blank" rel="noopener">@luishg</a> · <a href="https://luishg.com" target="_blank" rel="noopener">luishg.com</a> · <a href="https://github.com/luishg" target="_blank" rel="noopener">GitHub</a></p>
+            <p class="footer-license">MIT License · <a href="/privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
