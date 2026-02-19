@@ -12,9 +12,13 @@
 </head>
 <body>
 
-    <!-- Hero Section with Parallax -->
+    <!-- Full-page background with parallax -->
+    <div class="page-bg" aria-hidden="true">
+        <div class="page-bg-image"></div>
+    </div>
+
+    <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>open-os</h1>
@@ -127,14 +131,14 @@
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         // GPU-accelerated parallax for hero background
-        const heroBg = document.querySelector('.hero-bg');
-        if (!prefersReducedMotion) {
+        const pageBg = document.querySelector('.page-bg-image');
+        if (!prefersReducedMotion && pageBg) {
             let ticking = false;
             window.addEventListener('scroll', function() {
                 if (!ticking) {
                     requestAnimationFrame(function() {
                         const scrolled = window.pageYOffset;
-                        heroBg.style.transform = 'translate3d(0, ' + scrolled * 0.35 + 'px, 0) scale(1.1)';
+                        pageBg.style.transform = 'translate3d(0, ' + scrolled * -0.12 + 'px, 0) scale(1.1)';
                         ticking = false;
                     });
                     ticking = true;

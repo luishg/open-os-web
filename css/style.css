@@ -25,11 +25,12 @@
 
 html {
     scroll-behavior: smooth;
+    background-color: var(--color-bg);
 }
 
 body {
     font-family: var(--font-main);
-    background-color: var(--color-bg);
+    background-color: transparent;
     color: var(--color-text);
     line-height: 1.7;
     font-size: 16px;
@@ -52,6 +53,41 @@ a:hover {
     padding: 0 24px;
 }
 
+/* Page Background — extends behind all content */
+.page-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.page-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150%;
+    background-image: url('../images/space_explorer.jpg');
+    background-size: cover;
+    background-position: center 20%;
+    background-repeat: no-repeat;
+    transform: scale(1.1);
+    will-change: transform;
+}
+
+.page-bg::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, transparent, var(--color-bg));
+    z-index: 1;
+    pointer-events: none;
+}
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -60,20 +96,7 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    background-color: var(--color-bg);
-}
-
-.hero-bg {
-    position: absolute;
-    inset: -15% 0 0 0;
-    height: 130%;
-    background-image: url('../images/space_explorer.jpg');
-    background-size: cover;
-    background-position: center 20%;
-    background-repeat: no-repeat;
-    transform: scale(1.1);
-    will-change: transform;
+    z-index: 1;
 }
 
 .hero-overlay {
@@ -87,7 +110,7 @@ a:hover {
     );
 }
 
-/* Bottom fade to background color */
+/* Bottom fade for smooth hero transition */
 .hero::after {
     content: '';
     position: absolute;
@@ -95,7 +118,7 @@ a:hover {
     left: 0;
     right: 0;
     height: 200px;
-    background: linear-gradient(to bottom, transparent, var(--color-bg));
+    background: linear-gradient(to bottom, transparent, rgba(9, 9, 11, 0.4));
     z-index: 1;
     pointer-events: none;
 }
@@ -194,21 +217,40 @@ section h2 {
 
 /* Projects */
 .projects {
-    background-color: var(--color-bg);
+    position: relative;
+    z-index: 1;
+    background: transparent;
+}
+
+.projects::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(9, 9, 11, 0.2) 0%,
+        rgba(9, 9, 11, 0.6) 30%,
+        rgba(9, 9, 11, 0.9) 60%,
+        var(--color-bg) 90%
+    );
+    z-index: -1;
+    pointer-events: none;
 }
 
 .project {
     padding: 40px;
     margin-bottom: 24px;
-    background-color: var(--color-bg-card);
-    border: 1px solid var(--color-border);
+    background: rgba(21, 21, 24, 0.6);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-lg);
-    transition: border-color 0.2s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project:hover {
-    border-color: var(--color-border-light);
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .project:last-child {
@@ -317,11 +359,12 @@ section h2 {
 }
 
 .project-featured:hover {
-    border-color: var(--color-accent);
+    border-color: rgba(6, 182, 212, 0.4);
     box-shadow:
         0 0 20px rgba(6, 182, 212, 0.15),
         0 0 50px rgba(6, 182, 212, 0.08),
-        inset 0 0 30px rgba(6, 182, 212, 0.03);
+        inset 0 0 30px rgba(6, 182, 212, 0.03),
+        0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .project-links {
@@ -413,6 +456,8 @@ section h2 {
 
 /* Footer */
 .footer {
+    position: relative;
+    z-index: 1;
     background-color: var(--color-bg-alt);
     padding: 60px 0;
     text-align: center;
@@ -467,9 +512,8 @@ section h2 {
         min-height: 500px;
     }
 
-    .hero-bg {
-        height: 120%;
-        inset: -10% 0 0 0;
+    .page-bg-image {
+        height: 130%;
         background-position: center center;
     }
 
@@ -525,7 +569,7 @@ section h2 {
         scroll-behavior: auto;
     }
 
-    .hero-bg {
+    .page-bg-image {
         will-change: auto;
     }
 
