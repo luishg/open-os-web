@@ -5,36 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Privacy Policy — open-os LLM Browser Extension">
     <title>Privacy Policy — open-os</title>
+    <meta name="theme-color" content="#04060a">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
         .privacy {
-            padding: 120px 0 80px;
-            background-color: var(--color-bg);
+            padding: 140px 0 80px;
         }
         .privacy h1 {
-            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-family: var(--font-display);
+            font-size: clamp(1.9rem, 5vw, 2.6rem);
             font-weight: 700;
             letter-spacing: -0.03em;
             margin-bottom: 8px;
         }
         .privacy .effective-date {
-            color: var(--color-text-muted);
-            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--text-muted);
             margin-bottom: 48px;
         }
         .privacy h2 {
+            font-family: var(--font-display);
             font-size: 1.15rem;
-            font-weight: 600;
+            font-weight: 500;
             margin-top: 40px;
             margin-bottom: 12px;
             letter-spacing: -0.01em;
         }
         .privacy p,
         .privacy li {
-            color: var(--color-text-muted);
+            color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 12px;
             line-height: 1.8;
@@ -45,31 +51,35 @@
             margin-bottom: 16px;
         }
         .privacy li::before {
-            content: "—";
-            color: var(--color-accent);
+            content: "\2014";
+            color: var(--amber);
             margin-right: 10px;
         }
-        .privacy a {
-            color: var(--color-accent-light);
+        .privacy p a {
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
         .privacy strong {
-            color: var(--color-text);
+            color: var(--text);
             font-weight: 500;
         }
         .back-link {
             display: inline-block;
             margin-bottom: 32px;
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
         }
         .back-link:hover {
-            color: var(--color-accent-light);
+            color: var(--accent-light);
         }
     </style>
 </head>
 <body>
 
-    <section class="privacy">
+    <main class="privacy">
         <div class="container">
             <a href="/" class="back-link">&larr; back to open-os</a>
             <h1>Privacy Policy</h1>
@@ -101,14 +111,22 @@
             <h2>5. Contact</h2>
             <p>For questions about this privacy policy, contact <a href="mailto:info@open-os.com">info@open-os.com</a>.</p>
         </div>
-    </section>
+    </main>
 
     <footer class="footer">
-        <div class="container">
-            <p class="footer-brand">open-os</p>
-            <p class="footer-tagline">accesible, distributed and open tools for interoperable systems</p>
-            <p class="footer-author"><a href="https://x.com/luishg" target="_blank" rel="noopener">@luishg</a> · <a href="https://luishg.com" target="_blank" rel="noopener">luishg.com</a> · <a href="https://github.com/luishg" target="_blank" rel="noopener">GitHub</a></p>
-            <p class="footer-license">MIT License · <a href="/privacy.html">Privacy Policy</a></p>
+        <div class="container footer-inner">
+            <div class="footer-brand-block">
+                <p class="footer-brand">open<span class="accent">-</span>os</p>
+                <p class="footer-tagline">Accessible, distributed and open tools for interoperable systems.</p>
+            </div>
+            <div class="footer-links-block">
+                <p class="footer-author">
+                    <a href="https://x.com/luishg" target="_blank" rel="noopener">@luishg</a>
+                    <a href="https://luishg.com" target="_blank" rel="noopener">luishg.com</a>
+                    <a href="https://github.com/luishg" target="_blank" rel="noopener">GitHub</a>
+                </p>
+                <p class="footer-license">MIT License &middot; <a href="/privacy.html">Privacy Policy</a></p>
+            </div>
         </div>
     </footer>
 
