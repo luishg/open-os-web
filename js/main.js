@@ -16,74 +16,6 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    /* ----- Starfield (behind all content; hero photo covers it) ----- */
-    var canvas = document.createElement('canvas');
-    canvas.className = 'stars';
-    canvas.setAttribute('aria-hidden', 'true');
-    document.body.prepend(canvas);
-    var ctx = canvas.getContext('2d');
-    var stars = [];
-    var raf = null;
-
-    function buildStars() {
-        var dpr = Math.min(window.devicePixelRatio || 1, 2);
-        canvas.width = window.innerWidth * dpr;
-        canvas.height = window.innerHeight * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        var count = Math.round(window.innerWidth * window.innerHeight / 9000);
-        stars = [];
-        for (var i = 0; i < count; i++) {
-            stars.push({
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                r: Math.random() * 1.1 + 0.2,
-                base: Math.random() * 0.5 + 0.15,
-                amp: Math.random() * 0.35,
-                ph: Math.random() * Math.PI * 2,
-                sp: Math.random() * 0.9 + 0.3,
-                warm: Math.random() < 0.12
-            });
-        }
-    }
-
-    function drawStars(t) {
-        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-        for (var i = 0; i < stars.length; i++) {
-            var s = stars[i];
-            var a = s.base + (reducedMotion ? 0 : Math.sin(s.ph + t * 0.001 * s.sp) * s.amp);
-            if (a <= 0) continue;
-            ctx.globalAlpha = Math.min(a, 1);
-            ctx.fillStyle = s.warm ? '#fcd34d' : '#cfe5ff';
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, s.r, 0, 6.2832);
-            ctx.fill();
-        }
-    }
-
-    function loop(t) {
-        drawStars(t);
-        raf = requestAnimationFrame(loop);
-    }
-
-    buildStars();
-    if (reducedMotion) {
-        drawStars(0);
-    } else {
-        raf = requestAnimationFrame(loop);
-    }
-    window.addEventListener('resize', function () {
-        buildStars();
-        if (reducedMotion) drawStars(0);
-    });
-    document.addEventListener('visibilitychange', function () {
-        if (reducedMotion) return;
-        if (document.hidden) {
-            cancelAnimationFrame(raf);
-        } else {
-            raf = requestAnimationFrame(loop);
-        }
-    });
-
     /* ----- Reveals ----- */
     var reveals = document.querySelectorAll('.reveal');
 
@@ -107,36 +39,52 @@
             }
         });
 
-        /* Hero: photo drifts up slower than the page, content sinks and fades */
-        window.gsap.to('.hero-media img', {
-            yPercent: -10,
-            ease: 'none',
-            scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-        });
+        /* The journey: the page starts on the explorer at the base of the
+           canyon and ascends toward the light as you scroll to the end.
+           The image is bottom-anchored, so moving it down (positive y)
+           reveals its upper part. */
+        var BG_RATIO = 1.7768; /* artwork height / width */
+        var bgImg = document.querySelector('.page-bg img');
+
+        function bgSize() {
+            /* Wide enough to cover the viewport, tall enough to leave at
+               least half a viewport of travel on tall/narrow screens. */
+            var w = Math.max(window.innerWidth, window.innerHeight * 1.5 / BG_RATIO);
+            return { width: w, travel: w * BG_RATIO - window.innerHeight };
+        }
+
+        function applyBgSize() {
+            bgImg.style.width = bgSize().width + 'px';
+        }
+
+        applyBgSize();
+        window.ScrollTrigger.addEventListener('refreshInit', applyBgSize);
+
+        window.gsap.fromTo(bgImg,
+            { xPercent: -50, y: 0 },
+            {
+                xPercent: -50,
+                y: function () { return bgSize().travel; },
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: document.documentElement,
+                    start: 0,
+                    end: 'max',
+                    scrub: 0.6,
+                    invalidateOnRefresh: true
+                }
+            }
+        );
+
+        /* Hero content sinks and fades as the journey begins */
         window.gsap.to('.hero-content', {
             y: 90,
             opacity: 0.1,
             ease: 'none',
             scrollTrigger: { trigger: '.hero', start: 'top top', end: '75% top', scrub: true }
         });
-
-        /* Orbit band: Earth rises as the band scrolls through the viewport */
-        window.gsap.to('.orbit-media img', {
-            yPercent: -13,
-            ease: 'none',
-            scrollTrigger: { trigger: '.orbit-band', start: 'top bottom', end: 'bottom top', scrub: true }
-        });
-
-        /* Screenshots drift gently inside their column */
-        document.querySelectorAll('.mission-visual').forEach(function (el) {
-            window.gsap.fromTo(el, { y: 40 }, {
-                y: -20,
-                ease: 'none',
-                scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true }
-            });
-        });
     } else {
-        /* Fallback: IntersectionObserver reveals, no parallax */
+        /* Fallback: IntersectionObserver reveals, static background */
         var observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {

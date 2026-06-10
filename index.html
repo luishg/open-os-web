@@ -6,7 +6,7 @@
     <title>open-os — open tools for the unknown</title>
     <meta name="description" content="open-os — accessible, distributed and open tools for interoperable systems. A mission log of open-source projects exploring the future of computing.">
     <link rel="canonical" href="https://open-os.com/">
-    <meta name="theme-color" content="#04060a">
+    <meta name="theme-color" content="#010205">
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website">
@@ -26,11 +26,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Hero image preload (desktop sources) -->
+    <!-- Background artwork preload -->
     <link rel="preload" as="image"
-          imagesrcset="images/hero-astronaut-1280.avif 1280w, images/hero-astronaut-1600.avif 1600w, images/hero-astronaut-2560.avif 2560w"
-          imagesizes="100vw"
-          media="(min-width: 768px)">
+          imagesrcset="images/bg-ascent-1080.avif 1080w, images/bg-ascent-1600.avif 1600w, images/bg-ascent-2560.avif 2560w, images/bg-ascent-3764.avif 3764w"
+          imagesizes="100vw">
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -42,6 +41,25 @@
 <body>
 
     <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- One continuous vertical artwork. The whole page travels through it:
+         it opens on the explorer standing at the base and ascends toward the
+         light as you scroll. -->
+    <div class="page-bg" aria-hidden="true">
+        <picture>
+            <source type="image/avif"
+                    srcset="images/bg-ascent-1080.avif 1080w, images/bg-ascent-1600.avif 1600w, images/bg-ascent-2560.avif 2560w, images/bg-ascent-3764.avif 3764w"
+                    sizes="100vw">
+            <source type="image/webp"
+                    srcset="images/bg-ascent-1080.webp 1080w, images/bg-ascent-1600.webp 1600w, images/bg-ascent-2560.webp 2560w, images/bg-ascent-3764.webp 3764w"
+                    sizes="100vw">
+            <img src="images/bg-ascent-1600.jpg"
+                 srcset="images/bg-ascent-1080.jpg 1080w, images/bg-ascent-1600.jpg 1600w, images/bg-ascent-2560.jpg 2560w, images/bg-ascent-3764.jpg 3764w"
+                 sizes="100vw"
+                 alt="" fetchpriority="high" decoding="async"
+                 width="3764" height="6688">
+        </picture>
+    </div>
 
     <header class="site-nav" id="top">
         <nav class="site-nav-inner" aria-label="Primary">
@@ -58,29 +76,7 @@
 
         <!-- ===== Hero ===== -->
         <section class="hero" aria-label="Introduction">
-            <div class="hero-media" aria-hidden="true">
-                <picture>
-                    <source media="(max-width: 767px)" type="image/avif"
-                            srcset="images/hero-astronaut-mobile-960.avif">
-                    <source media="(max-width: 767px)" type="image/webp"
-                            srcset="images/hero-astronaut-mobile-960.webp">
-                    <source media="(max-width: 767px)"
-                            srcset="images/hero-astronaut-mobile-960.jpg">
-                    <source type="image/avif"
-                            srcset="images/hero-astronaut-1280.avif 1280w, images/hero-astronaut-1600.avif 1600w, images/hero-astronaut-2560.avif 2560w"
-                            sizes="100vw">
-                    <source type="image/webp"
-                            srcset="images/hero-astronaut-1280.webp 1280w, images/hero-astronaut-1600.webp 1600w, images/hero-astronaut-2560.webp 2560w"
-                            sizes="100vw">
-                    <img src="images/hero-astronaut-1600.jpg"
-                         srcset="images/hero-astronaut-1280.jpg 1280w, images/hero-astronaut-1600.jpg 1600w, images/hero-astronaut-2560.jpg 2560w"
-                         sizes="100vw"
-                         alt="" fetchpriority="high" decoding="async"
-                         width="2560" height="1700">
-                </picture>
-                <div class="hero-veil"></div>
-            </div>
-
+            <div class="hero-veil" aria-hidden="true"></div>
             <div class="hero-content">
                 <p class="kicker"><span class="kicker-dot" aria-hidden="true"></span>Mission log &mdash; exploring the unknown</p>
                 <h1 class="hero-title">open<span class="accent">-</span>os</h1>
@@ -90,50 +86,50 @@
                     <a href="https://github.com/luishg" target="_blank" rel="noopener" class="btn btn-ghost">GitHub<span class="ext" aria-hidden="true">&#8599;</span></a>
                 </div>
             </div>
-
-            <p class="hero-credit">NASA &middot; Aki Hoshide, ISS Expedition 32</p>
             <div class="scroll-cue" aria-hidden="true"><span></span></div>
         </section>
 
         <!-- ===== Principles ===== -->
         <section class="principles" id="principles" aria-labelledby="principles-title">
             <div class="container">
-                <p class="kicker reveal">01 &mdash; Why</p>
-                <h2 class="statement reveal" id="principles-title">
-                    Building a different relationship with technology &mdash; and paving the way toward <em>intelligent operating systems</em>.
-                </h2>
-                <p class="statement-sub reveal">
-                    open-os develops and promotes technologies that work across platforms, respect your data, and remain open for anyone.
-                </p>
-                <ul class="principle-grid" role="list">
-                    <li class="principle reveal">
-                        <span class="principle-index" aria-hidden="true">/01</span>
-                        <h3>Accessible</h3>
-                        <p>Open for anyone. No accounts, no gatekeepers, no telemetry.</p>
-                    </li>
-                    <li class="principle reveal">
-                        <span class="principle-index" aria-hidden="true">/02</span>
-                        <h3>Distributed</h3>
-                        <p>Local-first by design. Your machine, your models, your data.</p>
-                    </li>
-                    <li class="principle reveal">
-                        <span class="principle-index" aria-hidden="true">/03</span>
-                        <h3>Interoperable</h3>
-                        <p>Works across platforms, providers and operating systems.</p>
-                    </li>
-                </ul>
+                <div class="panel reveal">
+                    <p class="kicker">01 &mdash; Why</p>
+                    <h2 class="statement" id="principles-title">
+                        Building a different relationship with technology &mdash; and paving the way toward <em>intelligent operating systems</em>.
+                    </h2>
+                    <p class="statement-sub">
+                        open-os develops and promotes technologies that work across platforms, respect your data, and remain open for anyone.
+                    </p>
+                    <ul class="principle-grid" role="list">
+                        <li class="principle">
+                            <span class="principle-index" aria-hidden="true">/01</span>
+                            <h3>Accessible</h3>
+                            <p>Open for anyone. No accounts, no gatekeepers, no telemetry.</p>
+                        </li>
+                        <li class="principle">
+                            <span class="principle-index" aria-hidden="true">/02</span>
+                            <h3>Distributed</h3>
+                            <p>Local-first by design. Your machine, your models, your data.</p>
+                        </li>
+                        <li class="principle">
+                            <span class="principle-index" aria-hidden="true">/03</span>
+                            <h3>Interoperable</h3>
+                            <p>Works across platforms, providers and operating systems.</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <!-- ===== Missions ===== -->
         <section class="missions" id="missions" aria-labelledby="missions-title">
             <div class="container">
-                <header class="missions-head">
-                    <p class="kicker reveal">02 &mdash; Mission manifest</p>
-                    <h2 class="statement reveal" id="missions-title">Five active missions.</h2>
+                <header class="missions-head panel panel-slim reveal">
+                    <p class="kicker">02 &mdash; Mission manifest</p>
+                    <h2 class="statement" id="missions-title">Five active missions.</h2>
                 </header>
 
-                <article class="mission reveal" id="open-os-index">
+                <article class="mission panel reveal" id="open-os-index">
                     <div class="mission-meta">
                         <span class="mission-index" aria-hidden="true">M&mdash;01</span>
                         <div class="mission-tags">
@@ -164,7 +160,7 @@
                     </div>
                 </article>
 
-                <article class="mission reveal" id="llm-extension">
+                <article class="mission panel reveal" id="llm-extension">
                     <div class="mission-meta">
                         <span class="mission-index" aria-hidden="true">M&mdash;02</span>
                         <div class="mission-tags">
@@ -196,7 +192,7 @@
                     </div>
                 </article>
 
-                <article class="mission reveal" id="open-os-cli">
+                <article class="mission panel reveal" id="open-os-cli">
                     <div class="mission-meta">
                         <span class="mission-index" aria-hidden="true">M&mdash;03</span>
                         <div class="mission-tags">
@@ -227,7 +223,7 @@
                     </div>
                 </article>
 
-                <article class="mission reveal" id="soul-protocol">
+                <article class="mission panel reveal" id="soul-protocol">
                     <div class="mission-meta">
                         <span class="mission-index" aria-hidden="true">M&mdash;04</span>
                         <div class="mission-tags">
@@ -257,7 +253,7 @@
                     </div>
                 </article>
 
-                <article class="mission reveal" id="uptodown">
+                <article class="mission panel reveal" id="uptodown">
                     <div class="mission-meta">
                         <span class="mission-index" aria-hidden="true">M&mdash;05</span>
                         <div class="mission-tags">
@@ -290,32 +286,16 @@
             </div>
         </section>
 
-        <!-- ===== Orbit band ===== -->
-        <section class="orbit-band" aria-labelledby="orbit-title">
-            <div class="orbit-media" aria-hidden="true">
-                <picture>
-                    <source type="image/avif"
-                            srcset="images/orbit-earth-1024.avif 1024w, images/orbit-earth-1600.avif 1600w, images/orbit-earth-2560.avif 2560w"
-                            sizes="100vw">
-                    <source type="image/webp"
-                            srcset="images/orbit-earth-1024.webp 1024w, images/orbit-earth-1600.webp 1600w, images/orbit-earth-2560.webp 2560w"
-                            sizes="100vw">
-                    <img src="images/orbit-earth-1600.jpg"
-                         srcset="images/orbit-earth-1024.jpg 1024w, images/orbit-earth-1600.jpg 1600w, images/orbit-earth-2560.jpg 2560w"
-                         sizes="100vw"
-                         alt="" loading="lazy" decoding="async" width="2560" height="1340">
-                </picture>
-                <div class="orbit-veil"></div>
-            </div>
-            <div class="orbit-content">
+        <!-- ===== Window band — the artwork breathes ===== -->
+        <section class="window-band" aria-labelledby="onward-title">
+            <div class="window-inner">
                 <p class="kicker reveal">03 &mdash; Onward</p>
-                <h2 class="statement reveal" id="orbit-title">Most of the future of computing is still <em>unexplored territory</em>.</h2>
+                <h2 class="statement reveal" id="onward-title">Most of the future of computing is still <em>unexplored territory</em>.</h2>
                 <p class="statement-sub reveal">open-os builds open instruments for the journey.</p>
-                <div class="orbit-actions reveal">
+                <div class="window-actions reveal">
                     <a href="https://github.com/luishg" target="_blank" rel="noopener" class="btn btn-primary">Follow along on GitHub</a>
                 </div>
             </div>
-            <p class="hero-credit orbit-credit">NASA &middot; Bruce McCandless II, STS-41B, 1984</p>
         </section>
     </main>
 
@@ -333,7 +313,6 @@
                     <a href="https://github.com/luishg" target="_blank" rel="noopener">GitHub</a>
                 </p>
                 <p class="footer-license">MIT License &middot; <a href="/privacy.html">Privacy Policy</a></p>
-                <p class="footer-credit">Photography: NASA (public domain) &mdash; ISS Expedition 32 EVA self-portrait, Aki Hoshide &middot; STS-41B untethered flight, Bruce McCandless II.</p>
             </div>
         </div>
     </footer>
